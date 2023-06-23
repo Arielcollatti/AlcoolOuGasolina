@@ -1,28 +1,34 @@
-﻿
-Console.WriteLine(" === Alcool-Ou-Gasolina ==== \n");
+﻿CW(" === Alcool-Ou-Gasolina ==== \n");
 
 Console.Write("Digite o preço do etanol (R$).....: ");
-double valorEtanol = Convert.ToDouble(Console.ReadLine()!);
+double preçoEtanol = Convert.ToDouble(Console.ReadLine()!);
 
 Console.Write("Digite o preço da gasolina (R$)...: ");
-double valorGasolina = Convert.ToDouble(Console.ReadLine()!);
+double preçoGasolina = Convert.ToDouble(Console.ReadLine()!);
 
 
-double razaoPrecos = CalcularRazaoPrecos(valorEtanol, valorGasolina);
+double razaoPrecos = Calcular(preçoEtanol, preçoGasolina);
 double razaoPrecosPorcentagem = razaoPrecos * 100;
-    Console.WriteLine($"diferencia  entre os preços: {razaoPrecosPorcentagem:N1}%");
+CW($"diferencia  entre os preços: {razaoPrecosPorcentagem:N1}%");
 
- Console.ForegroundColor = ConsoleColor.DarkGreen;
-bool abastecerComGasolina = VerificarRecomendacao(razaoPrecos);
-    Console.WriteLine($"Recomendação: Abastecer com {((abastecerComGasolina) ? "Gasolina" : "Etanol")}");
+Console.ForegroundColor = ConsoleColor.DarkGreen;
+bool abastecerComGasolina = Recomendacao(razaoPrecos);
+CW($"Recomendação: Abastecer com {((abastecerComGasolina) ? "Gasolina" : "Etanol")}");
 Console.ResetColor();
-static double CalcularRazaoPrecos(double valorEtanol, double valorGasolina) {
+static double Calcular(double valorEtanol, double valorGasolina) {
 return valorEtanol / valorGasolina;
 }
 
-static bool VerificarRecomendacao(double razaoPrecos) {
+static bool Recomendacao(double razaoPrecos) {
 double percentualIdeal = 0.73;
 return razaoPrecos > percentualIdeal;
 }
 
 
+
+//Criação de uma sub rotina onde CW = Console.Writeline 
+void CW (string CW) 
+{
+    Console.WriteLine(CW);
+
+};
